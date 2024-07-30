@@ -1,35 +1,44 @@
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Tabs } from 'expo-router';
-import React from 'react';
-
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
+    <Tabs 
+      screenOptions={{ 
+        tabBarActiveTintColor: "white",
+        tabBarStyle: {backgroundColor: "black", height: 90},
+        headerTransparent: false,
+        
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="Analytics"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
+          title: 'Analytics',
+          tabBarIcon: ({ color }) => <MaterialIcons name="auto-graph" size={28} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="Program"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
+          title: 'Program',
+          tabBarIcon: ({ color }) => <Ionicons name="calendar-sharp" size={28} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'LiFT',
+          tabBarIcon: ({ color }) => <Ionicons name="barbell" size={28} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="Profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color }) => <FontAwesome5 name="user-alt" size={28} color={color} />,
         }}
       />
     </Tabs>
